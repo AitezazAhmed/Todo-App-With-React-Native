@@ -1,31 +1,35 @@
 import { Link } from "expo-router";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import useTheme from "../hooks/useTheme";
 
 export default function Index() {
+  const {toggleDarkMode,isDarkMode,colors}=useTheme()
   return (
-    <View
-      style={style.container}
-    >
-      <Text
-      style={style.content}
-      >Edit app/index.tsx to edit this screen.</Text>
-      <Text
-      style={style.text}
-      >hi i am Aitezaz</Text>
+<View style={[styles.container, { backgroundColor: colors.bg }]}>
+      <TouchableOpacity
+        onPress={toggleDarkMode}
+        style={[styles.button, { backgroundColor: colors.primary }]}
+      >
+        <Text style={[styles.text, { color: colors.text }]}>
+          {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        </Text>
+      </TouchableOpacity>
     </View>
   );
 }
-const style=StyleSheet.create({
-  container:{
-    flex:1,
-    gap:10,
-    justifyContent:"center",
-    alignItems:"center"
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
-  content:{
-    fontSize:20
+  button: {
+    paddingVertical: 12,
+    paddingHorizontal: 24,
+    borderRadius: 8,
   },
-  text:{
-fontSize:10
-  }
-})
+  text: {
+    fontSize: 16,
+    fontWeight: "bold",
+  },
+});
