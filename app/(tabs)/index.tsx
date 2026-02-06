@@ -17,6 +17,7 @@ export default function Index() {
 
         {/* ScrollView helps if content grows */}
         <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+          <Header/>
           <TodoInput />
         </ScrollView>
       </SafeAreaView>
